@@ -1,1 +1,4 @@
-monsterteaparty
+# monsterteaparty
+
+* basic text adventure game.
+*  

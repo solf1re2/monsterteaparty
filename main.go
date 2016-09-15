@@ -1,16 +1,27 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/solf1re2/monsterteaparty/gametime"
 )
 
 var startTime int64
+var maintimemanager gametime.Manager
 
 // main start
 func main() {
-	var maintimemanager = gametime.Init(time.Now().Unix())
+	startGame()
+	accessStartTime()
+}
+
+func startGame() {
+	maintimemanager = gametime.Init(time.Now().Unix())
 	time.Sleep(10000 * time.Millisecond)
 	gametime.GetTimeElapsed(maintimemanager)
+}
+
+func accessStartTime() {
+	fmt.Println(gametime.GetStartTime(maintimemanager))
 }
