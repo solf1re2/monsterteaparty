@@ -25,6 +25,8 @@ func loopForCommands(promptMessage string) string {
     return "Exiting, Good Bye.\n"
 }
 
+// processResponse - this will have general commands such as quit and help.
+// It will pass other input to a specialised command package designed for the program.
 func processResponse(r string, exit *bool) {
     switch r {
     case "quit":
