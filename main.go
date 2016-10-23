@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/solf1re2/monsterteaparty/console"
 	"github.com/solf1re2/monsterteaparty/gametime"
-    "github.com/solf1re2/monsterteaparty/console"
 )
 
 var startTime int64
@@ -14,7 +14,7 @@ var maintimemanager gametime.Manager
 // main start
 func main() {
 	//startGame()
-    console.StartConsole()
+	console.StartConsole()
 	//accessStartTime()
 }
 

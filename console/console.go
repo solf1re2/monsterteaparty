@@ -5,40 +5,42 @@ import (
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/solf1re2/monsterteaparty/command"
 )
 
 func StartConsole() {
-    prompt := "What would you like to do?"
-    // Start a loop, prompting for input from the user for commands.
-    // Have quit() as an escape command.
-    endMessage := loopForCommands(prompt)
-    fmt.Println(endMessage)
+	prompt := "What would you like to do?"
+	// Start a loop, prompting for input from the user for commands.
+	// Have quit() as an escape command.
+	endMessage := loopForCommands(prompt)
+	fmt.Println(endMessage)
 
 }
 
 func loopForCommands(promptMessage string) string {
-    var exit = false
-    for !exit {
-        response := PromptAndReturnInputFromUser(promptMessage)
-        processResponse(response, &exit)
-    }
-    return "Exiting, Good Bye.\n"
+	var exit = false
+	for !exit {
+		response := PromptAndReturnInputFromUser(promptMessage)
+		processResponse(response, &exit)
+	}
+	return "Exiting, Good Bye.\n"
 }
 
 // processResponse - this will have general commands such as quit and help.
 // It will pass other input to a specialised command package designed for the program.
 func processResponse(r string, exit *bool) {
-    switch r {
-    case "quit":
-        fmt.Println("You have quit.\n")
-        *exit = true
-    case "help":
-        fmt.Println("You'll find no help here.\n")
-    default:
-        fmt.Println("only commands available are: 'help', and 'quit'")
-    }
+	switch r {
+	case "quit":
+		fmt.Println("You have quit.\n")
+		*exit = true
+	case "help":
+		fmt.Println("You'll find no help here.\n")
+	default:
+		command.ProcessCommandInput(r)
+		// fmt.Println("only commands available are: 'help', and 'quit'")
+	}
 }
-
 
 /*
 Function called with input string used to prompt user for a single line input.
@@ -63,7 +65,7 @@ func PromptAndReturnInputFromUser(promptMessage string) string {
 	if err := scanner.Err(); err != nil {
 		log.Print(os.Stderr, "reading standard input:", err)
 	}
-    fmt.Printf("\n")
+	fmt.Printf("\n")
 
 	return i
 }
