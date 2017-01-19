@@ -31,7 +31,7 @@ func loopForCommands(promptMessage string) string {
 // It will pass other input to a specialised command package designed for the program.
 func processResponse(r string, exit *bool) {
 	switch r {
-	case "quit":
+	case "quit", "leave":
 		fmt.Println("You have quit.\n")
 		*exit = true
 	case "help":
